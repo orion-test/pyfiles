@@ -1,0 +1,26 @@
+#!/bin/sh
+OS=""
+if [ -z "$2" ]; then
+ OS=darwin
+else
+ OS=mac
+fi
+
+echo $1
+echo $2
+sudo rm /usr/local/bin/p4
+sudo rm /usr/local/bin/p4d
+sudo rm /usr/local/bin/p4broker
+sudo rm /usr/local/bin/p4p
+sudo rm /usr/local/bin/p4zk
+sudo ln -s /Users/vlok/p4clients/vlbuild_mac_ws1/$1/p4-bin/bin.darwin90x86_64/p4d /usr/local/bin/p4d
+sudo ln -s /Users/vlok/p4clients/vlbuild_mac_ws1/$1/p4-bin/bin.darwin90x86_64/p4broker /usr/local/bin/p4broker
+sudo ln -s /Users/vlok/p4clients/vlbuild_mac_ws1/$1/p4-bin/bin.darwin90x86_64/p4p /usr/local/bin/p4p
+sudo ln -s /Users/vlok/p4clients/vlbuild_mac_ws1/$1/p4-bin/bin.darwin90x86_64/p4zk /usr/local/bin/p4zk
+if [ $OS == "mac" ]; then 
+       sudo ln -s /Users/vlok/p4clients/vlbuild_mac_ws1/$1/p4-bin/bin.macosx105x86_64/p4 /usr/local/bin/p4
+else
+       sudo ln -s /Users/vlok/p4clients/vlbuild_mac_ws1/$1/p4-bin/bin.darwin90x86_64/p4 /usr/local/bin/p4
+fi
+p4 -V
+p4d -V
