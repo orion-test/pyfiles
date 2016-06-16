@@ -5,3 +5,5 @@ print (type(sample))
 
 sample[0] = [25]
 print (sample[0])
+print (type(sample[0]))
+print (type(sample[-2]))
